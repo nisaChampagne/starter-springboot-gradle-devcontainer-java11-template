@@ -1,0 +1,49 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.166.1/containers/java-8
+{
+	"name": "reworking-plants-java-project",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"args": {
+			"VARIANT": "11",
+			"INSTALL_MAVEN": "false",
+			"INSTALL_GRADLE": "true",
+			"INSTALL_NODE": "false",
+			"NODE_VERSION": "lts/*"
+		}
+	},
+
+	// Set *default* container specific settings.json values on container create.
+	"settings": { 
+		"terminal.integrated.shell.linux": "/bin/bash",
+		"java.home": "/docker-java-home",
+		// "java.import.gradle.java.home": "/usr/local/sdkman/candidates/java/current",
+		// "java.configuration.runtimes": [{
+		// 	"default": true,
+		// 	"name": "JavaSE-1.8",
+		// 	"path": "/usr/local/sdkman/candidates/java/current"
+		// }]
+		
+	},
+	
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"vscjava.vscode-java-pack",
+		"humao.rest-client",
+		"eamodio.gitlens",
+		"pivotal.vscode-boot-dev-pack"
+	],
+	//"workspaceMount": "source=c:\\source\\git-portal-api\\,target=/workspaces,type=bind,consistency=delegated",,
+	// "mounts": [
+	// 	"source=c:\\source\\git-portal-api\\fnol-portal-service,target=/workspaces/fnol-portal-service,type=bind,consistency=cached"
+	// ],
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "java -version",
+
+	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "vscode"
+}
