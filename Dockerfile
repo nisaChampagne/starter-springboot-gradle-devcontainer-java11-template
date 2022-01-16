@@ -13,8 +13,8 @@ RUN ["gradle", "dependencies"]
 
 FROM openjdk:11-jre-slim-buster
 
-COPY --from=builder /home/gradle/build/libs/reworking-plants-java-project-*.jar /app/reworking-plants-java-project.jar
+COPY --from=builder /home/gradle/build/libs/starter-springboot-gradle-devcontainer-java11-template-*.jar /app/starter-springboot-gradle-devcontainer-java11-template.jar
 
 WORKDIR /app
 
-CMD ["java", "-jar", "reworking-plants-java-project.jar"]
+CMD ["java", "-jar", "starter-springboot-gradle-devcontainer-java11-template.jar"]
