@@ -45,8 +45,8 @@ dependencies {
 
     testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
     testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
-
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
 

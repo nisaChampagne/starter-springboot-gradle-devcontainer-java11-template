@@ -35,11 +35,9 @@ public class PlaceholderController {
     }
     
     @GetMapping("/somewords")
-    ResponseEntity<Object> somewords (final HttpServletRequest httprequest) throws Exception {
+    ResponseEntity<String> somewords (final HttpServletRequest httprequest) throws Exception {
         SYSLOG.debug("some words");
-        final Map<String, Object> response =  new HashMap<String, Object>();
-        response.put("TESTING", this.placeholderDAO.placeholder());
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        return new ResponseEntity<>(this.placeholderDAO.placeholder(), HttpStatus.OK);
     }
     
 }
