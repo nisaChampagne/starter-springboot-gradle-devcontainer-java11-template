@@ -9,12 +9,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
 import com.example.gradle.spring.starter.dao.*;
+import com.example.gradle.spring.starter.model.Stats;
 
 @RestController
 @RequestMapping("/api/placeholder")
@@ -39,5 +43,27 @@ public class PlaceholderController {
         SYSLOG.debug("some words");
         return new ResponseEntity<>(this.placeholderDAO.placeholder(), HttpStatus.OK);
     }
+
+    @GetMapping("/visitCounter")
+    ResponseEntity<Map<Long, Integer>> visitCount (final HttpServletRequest httprequest) throws Exception {
+        SYSLOG.debug("debugging visitCount");
+
+        VisitCounter visitCounter = new VisitCounter();
+
+        List<Map<String, Stats>> listOfVisits = new ArrayList<Map<String, Stats>>();
+
+        // visit count by userid
+        Map<String, Stats> visit1 = new HashMap<String, Stats>();
+        visit1.put("1", new Stats(1));
+        listOfVisits.add(visit1);
+
+        Map<String, Stats> visit2 = new HashMap<String, Stats>();
+        visit2.put("2", new Stats(100));
+        listOfVisits.add(visit2);
+        
+        return new ResponseEntity<>(visitCounter.count(listOfVisits), HttpStatus.OK);
+    }
+
+
     
 }
